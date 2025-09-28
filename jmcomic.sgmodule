@@ -1,0 +1,18 @@
+#!name=AdTemplate MITM Blocker (One-File)
+#!desc=MITM + URL Rewrite 精准拦截 /ad_template 与 /ad_check，并屏蔽常见投放脚本域
+
+[URL Rewrite]
+# 精准拦截广告模板与打点（需要 MITM 才能匹配到路径）
+^https?:\/\/(?:www\.)?cdnzack\.cc\/(?:ad_template|ad_check)(?:\?.*)?$ - reject-200
+^https?:\/\/(?:www\.)?cdnsha\.org\/(?:ad_template|ad_check)(?:\?.*)?$ - reject-200
+^https?:\/\/cn-appdata\.jmapiproxy2\.cc\/ad_template(?:\?.*)?$ - reject-200
+
+[Rule]
+# 常见广告/投放脚本域（域级直接拒绝，不依赖 MITM）
+DOMAIN,cdn.tsyndicate.com,REJECT
+DOMAIN,poweredby.jads.co,REJECT
+DOMAIN,a.chnsrv.com,REJECT
+DOMAIN,a.realsrv.com,REJECT
+
+[MITM]
+hostname = %APPEND% cdnzack.cc, www.cdnzack.cc, cdnsha.org, www.cdnsha.org, cn-appdata.jmapiproxy2.cc
