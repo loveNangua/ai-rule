@@ -1,18 +1,10 @@
-#!name=AdTemplate MITM Blocker (One-File)
-#!desc=MITM + URL Rewrite 精准拦截 /ad_template 与 /ad_check，并屏蔽常见投放脚本域
+#!name=Ad Static-Only (MITM)
+#!desc=Block only /static/* on jmapiproxy1.cc & jmdanjonproxy.vip with image stub
 
 [URL Rewrite]
-# 精准拦截广告模板与打点（需要 MITM 才能匹配到路径）
-^https?:\/\/(?:www\.)?cdnzack\.cc\/(?:ad_template|ad_check)(?:\?.*)?$ - reject-200
-^https?:\/\/(?:www\.)?cdnsha\.org\/(?:ad_template|ad_check)(?:\?.*)?$ - reject-200
-^https?:\/\/cn-appdata\.jmapiproxy2\.cc\/ad_template(?:\?.*)?$ - reject-200
-
-[Rule]
-# 常见广告/投放脚本域（域级直接拒绝，不依赖 MITM）
-DOMAIN,cdn.tsyndicate.com,REJECT
-DOMAIN,poweredby.jads.co,REJECT
-DOMAIN,a.chnsrv.com,REJECT
-DOMAIN,a.realsrv.com,REJECT
+# 仅拦截 static 路径（图片/素材），返回占位图，避免白屏或错误
+^https?:\/\/cdn-msp\d+\.jmapiproxy1\.cc\/static\/.* - reject-img
+^https?:\/\/cdn-msp\d+\.jmdanjonproxy\.vip\/static\/.* - reject-img
 
 [MITM]
-hostname = %APPEND% cdnzack.cc, www.cdnzack.cc, cdnsha.org, www.cdnsha.org, cn-appdata.jmapiproxy2.cc
+hostname = %APPEND% cdn-msp*.jmapiproxy1.cc, cdn-msp*.jmdanjonproxy.vip
