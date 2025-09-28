@@ -1,0 +1,18 @@
+# Quantumult X — Ad Block (cdnzack + static-only)
+# version = 1.1
+
+# 仅拦 static 素材（不动 media）
+^https?:\/\/[^\/]*\.jmapiproxy1\.cc\/static\/.+ url reject-img
+^https?:\/\/[^\/]*\.jmdanjonproxy\.(vip|xyz)\/static\/.+ url reject-img
+
+# 拦截 cdnzack 广告容器与跳转
+^https?:\/\/(?:www\.)?cdnzack\.cc\/(?:ad_template|advertise)(?:\?.*)?$ url reject-200
+# 同站代理页（如有）
+^https?:\/\/cn-appdata\.jmapiproxy2\.cc\/ad_template(?:\?.*)?$ url reject-200
+
+# 投放脚本（可选，命中则直接空响应）
+^https?:\/\/a\.chnsrv\.com\/ad-provider\.js(?:\?.*)?$ url reject-200
+^https?:\/\/cdn\.tsyndicate\.com\/sdk\/v1\/master\.spot\.js(?:\?.*)?$ url reject-200
+^https?:\/\/poweredby\.jads\.co\/js\/jads\.js(?:\?.*)?$ url reject-200
+
+hostname = *.jmapiproxy1.cc, *.jmdanjonproxy.vip, *.jmdanjonproxy.xyz, cdnzack.cc, www.cdnzack.cc, cn-appdata.jmapiproxy2.cc, a.chnsrv.com, poweredby.jads.co, cdn.tsyndicate.com
