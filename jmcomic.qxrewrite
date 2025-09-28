@@ -1,22 +1,11 @@
-# Quantumult X — cdnzack/cdnsha + static-only + adscripts
-# version = 1.2
+# Quantumult X — cdnzack/cdnsha ad pages
+# 拦 ad_template（任意 group）→ 200 空白
+^https?:\/\/(?:www\.)?cdnzack\.cc\/ad_template(\?.*)?$ url reject-200
+^https?:\/\/(?:www\.)?cdnsha\.org\/ad_template(\?.*)?$ url reject-200
+^https?:\/\/cn-appdata\.jmapiproxy2\.cc\/ad_template(\?.*)?$ url reject-200
 
-# ad_template: 页面容器 → 200 空白
-^https?:\/\/(?:www\.)?cdnzack\.cc\/ad_template(?:\?.*)?$ url reject-200
-^https?:\/\/(?:www\.)?cdnsha\.org\/ad_template(?:\?.*)?$ url reject-200
-^https?:\/\/cn-appdata\.jmapiproxy2\.cc\/ad_template(?:\?.*)?$ url reject-200
+# 拦 advertise 列表 → 返回 {}
+^https?:\/\/(?:www\.)?cdnzack\.cc\/advertise(\?.*)?$ url reject-dict
+^https?:\/\/(?:www\.)?cdnsha\.org\/advertise(\?.*)?$ url reject-dict
 
-# advertise: JSON 列表 → 返回 {}
-^https?:\/\/(?:www\.)?cdnzack\.cc\/advertise(?:\?.*)?$ url reject-dict
-^https?:\/\/(?:www\.)?cdnsha\.org\/advertise(?:\?.*)?$ url reject-dict
-
-# 仅拦 /static/ 素材（不动 /media/）
-^https?:\/\/[^\/]*\.jmapiproxy1\.cc\/static\/.+ url reject-img
-^https?:\/\/[^\/]*\.jmdanjonproxy\.(vip|xyz)\/static\/.+ url reject-img
-
-# 投放脚本
-^https?:\/\/a\.chnsrv\.com\/ad-provider\.js(?:\?.*)?$ url reject-200
-^https?:\/\/cdn\.tsyndicate\.com\/sdk\/v1\/master\.spot\.js(?:\?.*)?$ url reject-200
-^https?:\/\/poweredby\.jads\.co\/js\/jads\.js(?:\?.*)?$ url reject-200
-
-hostname = *.jmapiproxy1.cc, *.jmdanjonproxy.vip, *.jmdanjonproxy.xyz, cdnzack.cc, www.cdnzack.cc, cdnsha.org, www.cdnsha.org, cn-appdata.jmapiproxy2.cc, a.chnsrv.com, poweredby.jads.co, cdn.tsyndicate.com
+hostname = cdnzack.cc, www.cdnzack.cc, cdnsha.org, www.cdnsha.org, cn-appdata.jmapiproxy2.cc
