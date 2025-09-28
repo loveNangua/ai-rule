@@ -1,9 +1,11 @@
-#!name=Ad Static-Only (MITM, fixed)
-#!desc=Block only /static/ on *.jmapiproxy1.cc & *.jmdanjonproxy.vip
+#!name=屏蔽 Static 路径
+#!desc=屏蔽 URL 中所有包含 /static/ 的请求。根据 @https://cdn-msp2.jmdanjonproxy.vip/static/resources/images/300-250(23).gif 的例子编写。
 
 [URL Rewrite]
-^https?:\/\/[^\/]*\.jmapiproxy1\.cc\/static\/.+ - reject-img
-^https?:\/\/[^\/]*\.jmdanjonproxy\.(?:vip|xyz)\/static\/.+ - reject-img
+# 此规则会拒绝所有路径中含有 /static/ 的 HTTP 和 HTTPS 请求
+^https?:\/\/.+\/static\/.* - reject
 
 [MITM]
-hostname = %APPEND% *.jmapiproxy1.cc, *.jmdanjonproxy.vip, *.jmdanjonproxy.xyz
+# 为了让 URL Rewrite 规则能作用于 HTTPS 请求，需要在此处添加相关域名
+# 您可以根据需要自行添加更多需要屏蔽的域名
+hostname = %APPEND% cdn-msp2.jmdanjonproxy.vip, cdn-msp3.jmapiproxy1.cc
