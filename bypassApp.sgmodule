@@ -2,13 +2,12 @@
 #!desc=跳过部分应用的代理检测（扩展：银行/运营商一键登录/支付/政务登录）
 
 [Rule]
-DOMAIN-SUFFIX,ccb.com,DIRECT
-DOMAIN-SUFFIX,ccb.com.cn,DIRECT
+DOMAIN,msmp.abchina.com.cn,REJECT
 
 [General]
-skip-proxy = %APPEND% ccb.com,ccb.com.cn,ibsbjstar.ccb.com.cn,ebank.ccb.com,h5.ccb.com,m.ccb.com,life.ccb.com,yunbusiness.ccb.com
-always-real-ip = %APPEND% ibsbjstar.ccb.com.cn,h5.ccb.com
+skip-proxy = %APPEND% www.baidu.com,yunbusiness.ccb.com,wxh.wo.cn,gate.lagou.com,www.abchina.com.cn,www.shanbay.com,login-service.mobile-bank.psbc.com,mobile-bank.psbc.com,id6.me,icbc.com.cn,95588.com,ccb.com,boc.cn,bankcomm.com,psbc.com,cmbchina.com,spdb.com.cn,cib.com.cn,cebbank.com,cgbchina.com.cn,citicbank.com,cmbc.com.cn,pab.com.cn,hxb.com.cn,czbank.com,hfbank.com.cn,hsbank.com.cn,cbhb.com.cn,bankofbeijing.com.cn,bosc.cn,bankofnanjing.com.cn,nbcb.com.cn,hzbank.com.cn,95516.com
 
+always-real-ip = %APPEND% easy-login.10099.com.cn,*-update.xoyocdn.com,id6.me,open.e.189.cn,icbc.com.cn,95588.com,ccb.com,boc.cn,bankcomm.com,psbc.com,cmbchina.com,spdb.com.cn,cib.com.cn,cebbank.com,cgbchina.com.cn,citicbank.com,cmbc.com.cn,pab.com.cn,hxb.com.cn,czbank.com,hfbank.com.cn,hsbank.com.cn,cbhb.com.cn,bankofbeijing.com.cn,bosc.cn,bankofnanjing.com.cn,nbcb.com.cn,hzbank.com.cn,95516.com
 # kyfw.12306.cn：铁路12306
 # applogin.95588.com,m.icbc.com.cn：工商银行
 # ebsnew.boc.cn：中国银行电子银行
