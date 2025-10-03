@@ -1,48 +1,31 @@
-#!name=Bypass Tunnel Proxy (CN Apps)
-#!desc=直连国内银行、支付、运营商、政务与视频类应用，避免TUN/VIF检测
+#!name=Skip Proxy And Real-IP Lists (Extended)
+#!desc=跳过部分应用的代理检测（扩展：银行/运营商一键登录/支付/政务登录）
 
 [Rule]
-# --- 银行类 ---
-DOMAIN-SUFFIX,icbc.com.cn,DIRECT
-DOMAIN-SUFFIX,95588.com,DIRECT
-DOMAIN-SUFFIX,ccb.com,DIRECT
-DOMAIN-SUFFIX,ccb.com.cn,DIRECT
-DOMAIN-SUFFIX,boc.cn,DIRECT
-DOMAIN-SUFFIX,bankofchina.com,DIRECT
-DOMAIN-SUFFIX,abchina.com,DIRECT
-DOMAIN-SUFFIX,abchina.com.cn,DIRECT
-DOMAIN-SUFFIX,cmbchina.com,DIRECT
-DOMAIN-SUFFIX,bankcomm.com,DIRECT
-DOMAIN-SUFFIX,pingan.com,DIRECT
-DOMAIN-SUFFIX,pingan.com.cn,DIRECT
-DOMAIN-SUFFIX,psbc.com,DIRECT
-DOMAIN-SUFFIX,psbc.com.cn,DIRECT
+DOMAIN,msmp.abchina.com.cn,REJECT
 
-# --- 运营商类 ---
-DOMAIN-SUFFIX,10086.cn,DIRECT
-DOMAIN-SUFFIX,chinamobile.com,DIRECT
-DOMAIN-SUFFIX,10010.com,DIRECT
-DOMAIN-SUFFIX,chinaunicom.com,DIRECT
-DOMAIN-SUFFIX,189.cn,DIRECT
-DOMAIN-SUFFIX,chinatelecom.com.cn,DIRECT
+[General]
+skip-proxy = %APPEND% www.baidu.com,yunbusiness.ccb.com,wxh.wo.cn,gate.lagou.com,www.abchina.com.cn,www.shanbay.com,login-service.mobile-bank.psbc.com,mobile-bank.psbc.com,id6.me,kyfw.12306.cn,applogin.95588.com,m.icbc.com.cn,ebsnew.boc.cn,pbank.bankcomm.com,bank.pingan.com,m.cmbchina.com,netpay.cmbchina.com,amobile.cmbchina.com,life.ccb.com,*.95588.com,*.icbc.com.cn,*.ccb.com,*.ccb.com.cn,*.boc.cn,*.bankofchina.com,*.abchina.com,*.abchina.com.cn,*.cmbchina.com,*.bankcomm.com,*.pingan.com,*.pingan.com.cn,*.psbc.com,*.psbc.com.cn,*.cmbc.com.cn,*.citicbank.com,*.cebbank.com,*.spdb.com.cn,*.cib.com.cn,*.hxb.com.cn,*.cgbchina.com.cn,*.bankofbeijing.com.cn,*.bankofshanghai.com,*.95516.com,short.weixin.qq.com,szshort.weixin.qq.com,weixin110.qq.com,render.alipay.com
+always-real-ip = %APPEND% easy-login.10099.com.cn,*-update.xoyocdn.com,id6.me,open.e.189.cn,*.cmpassport.com,opencloud.wostore.cn,id.10010.com,e.189.cn,verify.cmpassport.com,mdn.open.wo.com.cn
 
-# --- 支付类 ---
-DOMAIN-SUFFIX,alipay.com,DIRECT
-DOMAIN-SUFFIX,alipayobjects.com,DIRECT
-DOMAIN-SUFFIX,alipaydns.com,DIRECT
-DOMAIN-SUFFIX,tenpay.com,DIRECT
-DOMAIN-SUFFIX,wechat.com,DIRECT
-DOMAIN-SUFFIX,weixin.qq.com,DIRECT
-
-# --- 政务/政企类 ---
-DOMAIN-SUFFIX,gov.cn,DIRECT
-DOMAIN-SUFFIX,chinatax.gov.cn,DIRECT
-DOMAIN-SUFFIX,etax.cn,DIRECT
-DOMAIN-SUFFIX,tiantianfund.com,DIRECT
-DOMAIN-SUFFIX,szse.cn,DIRECT
-DOMAIN-SUFFIX,csrc.gov.cn,DIRECT
-DOMAIN-SUFFIX,cnipa.gov.cn,DIRECT
-DOMAIN-SUFFIX,医保.cn,DIRECT
-DOMAIN-SUFFIX,yibao.cn,DIRECT
-DOMAIN-SUFFIX,iask.cn,DIRECT
-DOMAIN-SUFFIX,12306.cn,DIRECT
+# kyfw.12306.cn：铁路12306
+# applogin.95588.com,m.icbc.com.cn：工商银行
+# ebsnew.boc.cn：中国银行电子银行
+# pbank.bankcomm.com：交通银行个人网银
+# bank.pingan.com：平安银行
+# m/amobile/netpay.cmbchina.com：招商银行/支付
+# life.ccb.com：建行生活
+# *.cmbc.com.cn：民生银行
+# *.citicbank.com：中信银行
+# *.cebbank.com：光大银行
+# *.spdb.com.cn：浦发银行
+# *.cib.com.cn：兴业银行
+# *.hxb.com.cn：华夏银行
+# *.cgbchina.com.cn：广发银行
+# *.bankofbeijing.com.cn：北京银行
+# *.bankofshanghai.com：上海银行
+# *.95516.com：中国银联支付
+# short.weixin.qq.com,szshort.weixin.qq.com,weixin110.qq.com：微信短连/安全域名（避免误判代理）
+# render.alipay.com：支付宝渲染/登录
+# *.cmpassport.com / opencloud.wostore.cn / id.10010.com / (open.)e.189.cn：三大运营商一键登录与开放平台
+# mdn.open.wo.com.cn：联通开放平台媒体域名
