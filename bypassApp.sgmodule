@@ -1,9 +1,5 @@
-#!SGMODULE
-# name: Bypass Tunnel Proxy (CN Apps)
-# desc: 直连国内银行、支付、运营商、政务与视频类应用，避免TUN/VIF检测
-
-[MITM]
-skip-proxy = *.icbc.com.cn, *.95588.com, *.ccb.com, *.ccb.com.cn, *.boc.cn, *.bankofchina.com, *.abchina.com, *.abchina.com.cn, *.cmbchina.com, *.bankcomm.com, *.pingan.com, *.pingan.com.cn, *.psbc.com, *.psbc.com.cn, *.10086.cn, *.chinamobile.com, *.10010.com, *.chinaunicom.com, *.189.cn, *.chinatelecom.com.cn, *.alipay.com, *.alipayobjects.com, *.alipaydns.com, *.tenpay.com, *.wechat.com, *.weixin.qq.com, *.gov.cn, *.chinatax.gov.cn, *.etax.cn, *.tiantianfund.com, *.szse.cn, *.csrc.gov.cn, *.cnipa.gov.cn, *.医保.cn, *.yibao.cn, *.iask.cn, *.12306.cn
+#!name=Bypass Tunnel Proxy (CN Apps)
+#!desc=直连国内银行、支付、运营商、政务与视频类应用，避免TUN/VIF检测
 
 [Rule]
 # --- 银行类 ---
@@ -21,6 +17,7 @@ DOMAIN-SUFFIX,pingan.com,DIRECT
 DOMAIN-SUFFIX,pingan.com.cn,DIRECT
 DOMAIN-SUFFIX,psbc.com,DIRECT
 DOMAIN-SUFFIX,psbc.com.cn,DIRECT
+
 # --- 运营商类 ---
 DOMAIN-SUFFIX,10086.cn,DIRECT
 DOMAIN-SUFFIX,chinamobile.com,DIRECT
@@ -28,6 +25,7 @@ DOMAIN-SUFFIX,10010.com,DIRECT
 DOMAIN-SUFFIX,chinaunicom.com,DIRECT
 DOMAIN-SUFFIX,189.cn,DIRECT
 DOMAIN-SUFFIX,chinatelecom.com.cn,DIRECT
+
 # --- 支付类 ---
 DOMAIN-SUFFIX,alipay.com,DIRECT
 DOMAIN-SUFFIX,alipayobjects.com,DIRECT
@@ -35,6 +33,7 @@ DOMAIN-SUFFIX,alipaydns.com,DIRECT
 DOMAIN-SUFFIX,tenpay.com,DIRECT
 DOMAIN-SUFFIX,wechat.com,DIRECT
 DOMAIN-SUFFIX,weixin.qq.com,DIRECT
+
 # --- 政务/政企类 ---
 DOMAIN-SUFFIX,gov.cn,DIRECT
 DOMAIN-SUFFIX,chinatax.gov.cn,DIRECT
