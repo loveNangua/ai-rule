@@ -2,11 +2,12 @@
 #!desc=跳过部分应用的代理检测（扩展：银行/运营商一键登录/支付/政务登录）
 
 [Rule]
-DOMAIN,msmp.abchina.com.cn,REJECT
+DOMAIN-SUFFIX,ccb.com,DIRECT
+DOMAIN-SUFFIX,ccb.com.cn,DIRECT
 
 [General]
-skip-proxy = %APPEND% www.baidu.com,yunbusiness.ccb.com,wxh.wo.cn,gate.lagou.com,www.abchina.com.cn,www.shanbay.com,login-service.mobile-bank.psbc.com,mobile-bank.psbc.com,id6.me,kyfw.12306.cn,applogin.95588.com,m.icbc.com.cn,ebsnew.boc.cn,pbank.bankcomm.com,bank.pingan.com,m.cmbchina.com,netpay.cmbchina.com,amobile.cmbchina.com,life.ccb.com,*.95588.com,*.icbc.com.cn,*.ccb.com,*.ccb.com.cn,*.boc.cn,*.bankofchina.com,*.abchina.com,*.abchina.com.cn,*.cmbchina.com,*.bankcomm.com,*.pingan.com,*.pingan.com.cn,*.psbc.com,*.psbc.com.cn,*.cmbc.com.cn,*.citicbank.com,*.cebbank.com,*.spdb.com.cn,*.cib.com.cn,*.hxb.com.cn,*.cgbchina.com.cn,*.bankofbeijing.com.cn,*.bankofshanghai.com,*.95516.com,short.weixin.qq.com,szshort.weixin.qq.com,weixin110.qq.com,render.alipay.com
-always-real-ip = %APPEND% easy-login.10099.com.cn,*-update.xoyocdn.com,id6.me,open.e.189.cn,*.cmpassport.com,opencloud.wostore.cn,id.10010.com,e.189.cn,verify.cmpassport.com,mdn.open.wo.com.cn
+skip-proxy = %APPEND% ccb.com,ccb.com.cn,ibsbjstar.ccb.com.cn,ebank.ccb.com,h5.ccb.com,m.ccb.com,life.ccb.com,yunbusiness.ccb.com
+always-real-ip = %APPEND% ibsbjstar.ccb.com.cn,h5.ccb.com
 
 # kyfw.12306.cn：铁路12306
 # applogin.95588.com,m.icbc.com.cn：工商银行
