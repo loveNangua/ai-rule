@@ -1,31 +1,40 @@
-#!name=Skip Proxy And Real-IP Lists (Extended)
-#!desc=跳过部分应用的代理检测（扩展：银行/运营商一键登录/支付/政务登录）
+# =====================================================
+# name: Skip Proxy & Real-IP
+# desc: 跳过部分应用的代理检测 / 强制返回真实 IP / 屏蔽农行自检
+# =====================================================
 
-[Rule]
-DOMAIN,msmp.abchina.com.cn,REJECT
+rule-set:
+  - name: skip-proxy-and-real-ip
+    type: inline
+    rules:
+      # ===== 屏蔽 =====
+      - domain: msmp.abchina.com.cn
+        reject: true
 
-[General]
-skip-proxy = %APPEND% www.baidu.com,yunbusiness.ccb.com,wxh.wo.cn,gate.lagou.com,www.abchina.com.cn,www.shanbay.com,login-service.mobile-bank.psbc.com,mobile-bank.psbc.com,id6.me,icbc.com.cn,95588.com,ccb.com,boc.cn,bankcomm.com,psbc.com,cmbchina.com,spdb.com.cn,cib.com.cn,cebbank.com,cgbchina.com.cn,citicbank.com,cmbc.com.cn,pab.com.cn,hxb.com.cn,czbank.com,hfbank.com.cn,hsbank.com.cn,cbhb.com.cn,bankofbeijing.com.cn,bosc.cn,bankofnanjing.com.cn,nbcb.com.cn,hzbank.com.cn,95516.com
+      # ===== 强制直连（skip-proxy） =====
+      - domain-suffix: baidu.com
+        direct: true
+      - domain-suffix: ccb.com
+        direct: true
+      - domain: wxh.wo.cn
+        direct: true
+      - domain: gate.lagou.com
+        direct: true
+      - domain-suffix: abchina.com.cn
+        direct: true
+      - domain-suffix: shanbay.com
+        direct: true
+      - domain-suffix: mobile-bank.psbc.com
+        direct: true
+      - domain: id6.me
+        direct: true
 
-always-real-ip = %APPEND% easy-login.10099.com.cn,*-update.xoyocdn.com,id6.me,open.e.189.cn,icbc.com.cn,95588.com,ccb.com,boc.cn,bankcomm.com,psbc.com,cmbchina.com,spdb.com.cn,cib.com.cn,cebbank.com,cgbchina.com.cn,citicbank.com,cmbc.com.cn,pab.com.cn,hxb.com.cn,czbank.com,hfbank.com.cn,hsbank.com.cn,cbhb.com.cn,bankofbeijing.com.cn,bosc.cn,bankofnanjing.com.cn,nbcb.com.cn,hzbank.com.cn,95516.com
-# kyfw.12306.cn：铁路12306
-# applogin.95588.com,m.icbc.com.cn：工商银行
-# ebsnew.boc.cn：中国银行电子银行
-# pbank.bankcomm.com：交通银行个人网银
-# bank.pingan.com：平安银行
-# m/amobile/netpay.cmbchina.com：招商银行/支付
-# life.ccb.com：建行生活
-# *.cmbc.com.cn：民生银行
-# *.citicbank.com：中信银行
-# *.cebbank.com：光大银行
-# *.spdb.com.cn：浦发银行
-# *.cib.com.cn：兴业银行
-# *.hxb.com.cn：华夏银行
-# *.cgbchina.com.cn：广发银行
-# *.bankofbeijing.com.cn：北京银行
-# *.bankofshanghai.com：上海银行
-# *.95516.com：中国银联支付
-# short.weixin.qq.com,szshort.weixin.qq.com,weixin110.qq.com：微信短连/安全域名（避免误判代理）
-# render.alipay.com：支付宝渲染/登录
-# *.cmpassport.com / opencloud.wostore.cn / id.10010.com / (open.)e.189.cn：三大运营商一键登录与开放平台
-# mdn.open.wo.com.cn：联通开放平台媒体域名
+      # ===== 强制真实 IP（always-real-ip） =====
+      - domain: easy-login.10099.com.cn
+        real-ip: true
+      - domain-suffix: xoyocdn.com
+        real-ip: true
+      - domain: id6.me
+        real-ip: true
+      - domain: open.e.189.cn
+        real-ip: true
